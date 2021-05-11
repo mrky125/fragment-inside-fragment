@@ -2,24 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorGray"
     android:orientation="vertical">
 
-    <TextView
+    <Button
+        android:id="@+id/btnFragmentInsideActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activity top" />
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Go to fragments inside activity" />
 
-    <FrameLayout
-        android:id="@+id/flContainer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <TextView
+    <Button
+        android:id="@+id/btnEpoxyRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activity bottom" />
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Go to RecyclerView In Epoxy" />
 
 </LinearLayout>
 
