@@ -13,7 +13,7 @@ class EpoxyRecyclerViewActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportFragmentManager.beginTransaction().apply {
-            // TODO add Fragment
+            add(binding.flContainer.id, EpoxyParentFragment())
             commit()
         }
     }
