@@ -11,5 +11,15 @@ class EpoxyChildController : TypedEpoxyController<List<String>>() {
                 title(it)
             }
         }
+        bodyItem {
+            id("foo")
+            buttonTitle("foo")
+        }
+        data?.forEach { it ->
+            headerView {
+                id(it)
+                title(it)
+            }
+        }
     }
 }
