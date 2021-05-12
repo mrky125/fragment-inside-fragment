@@ -28,7 +28,9 @@ class EpoxyParentFragment : Fragment() {
     }
 
     private fun setupEpoxyAdapter() {
-        // TODO create epoxy controller, and set data into adapter
+        val controller = EpoxyChildController()
+        binding.epoxyRecyclerView.adapter = controller.adapter
+        controller.setData(listOf("one", "two", "three", "four", "five"))
     }
 
 }

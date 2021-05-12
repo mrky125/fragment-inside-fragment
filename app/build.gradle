@@ -1,6 +1,11 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    correctErrorTypes = true
+}
 
 android {
     compileSdkVersion 30
@@ -24,6 +29,7 @@ android {
     }
 
     buildFeatures {
+        dataBinding true
         viewBinding true
     }
 }
@@ -38,7 +44,8 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.0'
     def epoxy_version = '4.5.0'
     implementation "com.airbnb.android:epoxy:$epoxy_version"
-    annotationProcessor "com.airbnb.android:epoxy-processor:$epoxy_version"
+    implementation "com.airbnb.android:epoxy-databinding:$epoxy_version"
+    kapt "com.airbnb.android:epoxy-processor:$epoxy_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
