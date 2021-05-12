@@ -1,24 +1,26 @@
 package com.example.fragmentinsidefragment
 
-import com.airbnb.epoxy.TypedEpoxyController
+import com.airbnb.epoxy.Typed2EpoxyController
 
-class EpoxyChildController : TypedEpoxyController<List<String>>() {
+class EpoxyChildController : Typed2EpoxyController<List<String>, List<String>>() {
 
-    override fun buildModels(data: List<String>?) {
-        data?.forEach { it ->
-            headerView {
+    override fun buildModels(headers: List<String>?, buttons: List<String>?) {
+        headers?.forEach {
+            itemHeader {
                 id(it)
-                title(it)
+                descriptionText(it)
             }
         }
-        bodyItem {
-            id("foo")
-            buttonTitle("foo")
-        }
-        data?.forEach { it ->
-            headerView {
+        buttons?.forEach {
+            itemBody {
                 id(it)
-                title(it)
+                buttonTitle(it)
+            }
+        }
+        headers?.forEach {
+            itemHeader {
+                id(it)
+                descriptionText(it)
             }
         }
     }
