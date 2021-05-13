@@ -2,22 +2,26 @@ package com.example.fragmentinsidefragment.ui.epoxy
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
-import com.airbnb.epoxy.Typed2EpoxyController
+import com.airbnb.epoxy.TypedEpoxyController
 import com.example.fragmentinsidefragment.data.EpoxyListModel
 import com.example.fragmentinsidefragment.itemBody
 import com.example.fragmentinsidefragment.ui.epoxy.model.itemFooter
 import com.example.fragmentinsidefragment.ui.epoxy.model.itemHeader
+import com.example.fragmentinsidefragment.viewmodel.EpoxyViewModel
 
-class EpoxyChildController : Typed2EpoxyController<LifecycleOwner, EpoxyListModel>() {
+class EpoxyChildController(
+    private val viewModel: EpoxyViewModel,
+    private val lifecycleOwner: LifecycleOwner
+) : TypedEpoxyController<EpoxyListModel>() {
 
     companion object {
         const val SPAN_SIZE_HALF = 1
         const val SPAN_SIZE_NORMAL = 2
     }
 
-    override fun buildModels(lifecycleOwner: LifecycleOwner?, data: EpoxyListModel?) {
+    override fun buildModels(data: EpoxyListModel?) {
         data?.firstList?.also {
-            setupFirstList(lifecycleOwner, it)
+            setupFirstList(it)
         }
         data?.buttons?.also {
             setupButtons(it)
@@ -36,7 +40,7 @@ class EpoxyChildController : Typed2EpoxyController<LifecycleOwner, EpoxyListMode
         }
     }
 
-    private fun setupFirstList(lifecycleOwner: LifecycleOwner?, list: List<LiveData<String>>) {
+    private fun setupFirstList(list: List<LiveData<String>>) {
         list.forEach {
             itemHeader {
                 spanSizeOverride { _, position, _ ->
@@ -45,7 +49,8 @@ class EpoxyChildController : Typed2EpoxyController<LifecycleOwner, EpoxyListMode
                         else -> SPAN_SIZE_HALF
                     }
                 }
-                id(it.value)
+                id(it.toString()) // idは一意にする（仮でLiveDataのインスタンスそのままにしている）
+                viewModel(viewModel)
                 lifecycleOwner(lifecycleOwner)
                 item(it)
             }
@@ -67,7 +72,7 @@ class EpoxyChildController : Typed2EpoxyController<LifecycleOwner, EpoxyListMode
     private fun setupSecondList(list: List<LiveData<String>>) {
         list.forEach {
             itemHeader {
-                id(it.value)
+                id(it.toString())
             }
         }
     }

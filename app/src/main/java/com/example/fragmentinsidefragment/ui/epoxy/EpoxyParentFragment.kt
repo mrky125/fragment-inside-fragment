@@ -49,7 +49,7 @@ class EpoxyParentFragment : Fragment() {
     }
 
     private fun setupEpoxyAdapter() {
-        val controller = EpoxyChildController().apply {
+        val controller = EpoxyChildController(viewModel, viewLifecycleOwner).apply {
             spanCount = EpoxyChildController.SPAN_SIZE_NORMAL
         }
         val gridLayoutManager = GridLayoutManager(requireActivity(), EpoxyChildController.SPAN_SIZE_NORMAL).apply {
@@ -67,12 +67,12 @@ class EpoxyParentFragment : Fragment() {
             adapter = controller.adapter
             layoutManager = gridLayoutManager
         }
-        controller.setData(viewLifecycleOwner, createEpoxyListModel())
+        controller.setData(createEpoxyListModel())
         viewModel.firstList.observe(viewLifecycleOwner, {
-            controller.setData(viewLifecycleOwner, createEpoxyListModel())
+            controller.setData(createEpoxyListModel())
         })
         viewModel.secondList.observe(viewLifecycleOwner, {
-            controller.setData(viewLifecycleOwner, createEpoxyListModel())
+            controller.setData(createEpoxyListModel())
         })
     }
 

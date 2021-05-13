@@ -4,12 +4,17 @@
     <data>
 
         <variable
+            name="viewModel"
+            type="com.example.fragmentinsidefragment.viewmodel.EpoxyViewModel" />
+
+        <variable
             name="descriptionText"
             type="String" />
 
     </data>
 
     <LinearLayout
+        android:onClick="@{() -> viewModel.tapItem(descriptionText)}"
         android:id="@+id/llItemView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

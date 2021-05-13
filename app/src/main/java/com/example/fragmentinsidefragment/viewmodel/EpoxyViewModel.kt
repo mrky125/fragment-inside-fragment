@@ -1,5 +1,6 @@
 package com.example.fragmentinsidefragment.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -29,6 +30,15 @@ class EpoxyViewModel : ViewModel() {
             delay(2000)
             val list = listOf("one", "two", "three", "four", "five", "six")
             secondList.value = list.map { MutableLiveData(it) }
+        }
+    }
+
+    fun tapItem(itemValue: String) {
+        Log.d("viewModel","tapped item: $itemValue")
+        firstList.value?.forEach {
+            if (it.value == itemValue) {
+                it.value = "$itemValue clicked!"
+            }
         }
     }
 
