@@ -23,5 +23,11 @@ class EpoxyChildController : Typed2EpoxyController<List<String>, List<String>>()
                 descriptionText(it)
             }
         }
+        repeat(3) {
+            itemFooter {
+                id("$it footer")
+                footer("footer!")
+            }
+        }
     }
 }
