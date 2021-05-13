@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.fragmentinsidefragment.databinding.FragmentEpoxyParentBinding
 
 class EpoxyParentFragment : Fragment() {
@@ -28,9 +29,20 @@ class EpoxyParentFragment : Fragment() {
     }
 
     private fun setupEpoxyAdapter() {
-        val controller = EpoxyChildController()
-        binding.epoxyRecyclerView.adapter = controller.adapter
-        controller.setData(listOf("one", "two", "three", "four", "five"), listOf("foo", "bar"))
+        val controller = EpoxyChildController().apply {
+            spanCount = EpoxyChildController.SPAN_SIZE_NORMAL
+        }
+        binding.epoxyRecyclerView.apply {
+            adapter = controller.adapter
+            layoutManager =
+                GridLayoutManager(requireActivity(), EpoxyChildController.SPAN_SIZE_NORMAL).apply {
+                    spanSizeLookup = controller.spanSizeLookup
+                }
+        }
+        controller.setData(
+            listOf("one", "two", "three", "four", "five", "six", "seven", "eight"),
+            listOf("foo", "bar")
+        )
     }
 
 }
