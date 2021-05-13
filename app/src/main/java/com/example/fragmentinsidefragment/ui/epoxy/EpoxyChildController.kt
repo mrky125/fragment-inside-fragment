@@ -29,6 +29,12 @@ class EpoxyChildController(
         data?.secondList?.also {
             setupSecondList(it)
         }
+        data?.buttons?.also {
+            setupButtons(it)
+        }
+        data?.firstList?.also {
+            setupFirstList(it)
+        }
         repeat(3) {
             itemFooter {
                 spanSizeOverride { _, _, _ ->
@@ -72,7 +78,10 @@ class EpoxyChildController(
     private fun setupSecondList(list: List<LiveData<String>>) {
         list.forEach {
             itemHeader {
-                id(it.toString())
+                id(it.toString()) // idは一意にする（仮でLiveDataのインスタンスそのままにしている）
+                viewModel(viewModel)
+                lifecycleOwner(lifecycleOwner)
+                item(it)
             }
         }
     }

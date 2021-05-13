@@ -40,6 +40,11 @@ class EpoxyViewModel : ViewModel() {
                 it.value = "$itemValue clicked!"
             }
         }
+        secondList.value?.forEach {
+            if (it.value == itemValue) {
+                it.value = "$itemValue clicked!"
+            }
+        }
     }
 
 }
