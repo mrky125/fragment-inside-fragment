@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.fragmentinsidefragment.data.EpoxyListModel
 import com.example.fragmentinsidefragment.databinding.FragmentEpoxyParentBinding
 import com.example.fragmentinsidefragment.viewmodel.EpoxyViewModel
 
@@ -50,17 +52,36 @@ class EpoxyParentFragment : Fragment() {
         val controller = EpoxyChildController().apply {
             spanCount = EpoxyChildController.SPAN_SIZE_NORMAL
         }
+        val gridLayoutManager = GridLayoutManager(requireActivity(), EpoxyChildController.SPAN_SIZE_NORMAL).apply {
+            spanSizeLookup = controller.spanSizeLookup
+        }
+        // 先頭のアイテムが挿入されたらスクロール位置を先頭に移動する
+        controller.adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                if (positionStart == 0) {
+                    gridLayoutManager.scrollToPosition(0)
+                }
+            }
+        })
         binding.epoxyRecyclerView.apply {
             adapter = controller.adapter
-            layoutManager =
-                GridLayoutManager(requireActivity(), EpoxyChildController.SPAN_SIZE_NORMAL).apply {
-                    spanSizeLookup = controller.spanSizeLookup
-                }
+            layoutManager = gridLayoutManager
         }
-        controller.setData(emptyList(), listOf("foo", "bar"))
+        controller.setData(viewLifecycleOwner, createEpoxyListModel())
         viewModel.firstList.observe(viewLifecycleOwner, {
-            controller.setData(it, listOf("foo", "bar"))
+            controller.setData(viewLifecycleOwner, createEpoxyListModel())
         })
+        viewModel.secondList.observe(viewLifecycleOwner, {
+            controller.setData(viewLifecycleOwner, createEpoxyListModel())
+        })
+    }
+
+    private fun createEpoxyListModel(): EpoxyListModel {
+        return EpoxyListModel(
+            viewModel.firstList.value,
+            viewModel.secondList.value,
+            viewModel.buttons
+        )
     }
 
 }

@@ -8,20 +8,27 @@ import kotlinx.coroutines.launch
 
 class EpoxyViewModel : ViewModel() {
 
-    val firstList: MutableLiveData<List<String>> = MutableLiveData(emptyList())
-    val secondList: MutableLiveData<List<String>> = MutableLiveData(emptyList())
+    val firstList = MutableLiveData(listOf(MutableLiveData<String>()))
+    val secondList = MutableLiveData(listOf(MutableLiveData<String>()))
+    val buttons = listOf("foo", "bar")
 
     fun setFirstList() {
         viewModelScope.launch {
             delay(1000)
-            firstList.value = listOf("one", "two", "three", "four", "five", "six", "seven", "eight")
+            val list = listOf("one", "two", "three", "four", "five", "six", "seven", "eight")
+            firstList.value = list.map { MutableLiveData(it) }
+            delay(3000)
+            firstList.value?.forEach {
+                it.value = "updated! ${it.value}"
+            }
         }
     }
 
     fun setSecondList() {
         viewModelScope.launch {
-            delay(1000)
-            secondList.value = listOf("one", "two", "three", "four", "five", "six")
+            delay(2000)
+            val list = listOf("one", "two", "three", "four", "five", "six")
+            secondList.value = list.map { MutableLiveData(it) }
         }
     }
 

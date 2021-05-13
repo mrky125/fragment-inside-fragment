@@ -1,4 +1,4 @@
-package com.example.fragmentinsidefragment.ui.epoxy
+package com.example.fragmentinsidefragment.ui.epoxy.model
 
 import androidx.databinding.ViewDataBinding
 import com.airbnb.epoxy.DataBindingEpoxyModel
