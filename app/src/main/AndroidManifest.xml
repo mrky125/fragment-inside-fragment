@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FragmentInsideActivity" />
-        <activity android:name=".EpoxyRecyclerViewActivity" />
+        <activity android:name=".ui.fragmentinside.FragmentInsideActivity" />
+        <activity android:name=".ui.epoxy.EpoxyRecyclerViewActivity" />
     </application>
 
 </manifest>

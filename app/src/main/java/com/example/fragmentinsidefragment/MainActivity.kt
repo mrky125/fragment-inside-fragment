@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.fragmentinsidefragment.databinding.ActivityMainBinding
+import com.example.fragmentinsidefragment.ui.epoxy.EpoxyRecyclerViewActivity
+import com.example.fragmentinsidefragment.ui.fragmentinside.FragmentInsideActivity
 
 class MainActivity : AppCompatActivity() {
 

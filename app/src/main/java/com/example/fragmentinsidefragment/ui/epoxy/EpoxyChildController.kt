@@ -1,6 +1,8 @@
-package com.example.fragmentinsidefragment
+package com.example.fragmentinsidefragment.ui.epoxy
 
 import com.airbnb.epoxy.Typed2EpoxyController
+import com.example.fragmentinsidefragment.itemBody
+import com.example.fragmentinsidefragment.itemHeader
 
 class EpoxyChildController : Typed2EpoxyController<List<String>, List<String>>() {
 

@@ -1,4 +1,4 @@
-package com.example.fragmentinsidefragment
+package com.example.fragmentinsidefragment.ui.fragmentinside
 
 import android.util.Log
 import android.view.LayoutInflater

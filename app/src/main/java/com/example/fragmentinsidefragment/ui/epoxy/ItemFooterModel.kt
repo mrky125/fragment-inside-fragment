@@ -1,10 +1,11 @@
-package com.example.fragmentinsidefragment
+package com.example.fragmentinsidefragment.ui.epoxy
 
 import androidx.databinding.ViewDataBinding
 import com.airbnb.epoxy.DataBindingEpoxyModel
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.databinding.BR
+import com.example.fragmentinsidefragment.R
 
 @EpoxyModelClass(layout = R.layout.item_footer)
 abstract class ItemFooterModel : DataBindingEpoxyModel() {
