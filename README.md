@@ -7,8 +7,12 @@ Fragmentの中にFragmentをパーツとして配置するデモ。
 
 <image src="https://user-images.githubusercontent.com/69252773/117393392-0361d900-af2f-11eb-8cd2-40c7ce924096.png" width="240px">
 
+## 参考
+- https://stackoverflow.com/questions/6672066/fragment-inside-fragment
+- https://qiita.com/yoppie_x/items/30b91d63f55b775af3c5
 
-# 課題
+
+## 課題
 
 各子FragmentでRecyclerViewを持っているが、全FragmentのアイテムのViewがメモリに展開されたままになる。
 
