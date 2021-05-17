@@ -1,4 +1,4 @@
-package com.example.fragmentinsidefragment.ui.epoxy
+package com.example.fragmentinsidefragment.ui.epoxy.controller
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fragmentinsidefragment.data.EpoxyListModel
 import com.example.fragmentinsidefragment.databinding.FragmentEpoxyParentBinding
+import com.example.fragmentinsidefragment.ui.epoxy.controller.EpoxyChildController
 import com.example.fragmentinsidefragment.viewmodel.EpoxyViewModel
 
 class EpoxyParentFragment : Fragment() {
