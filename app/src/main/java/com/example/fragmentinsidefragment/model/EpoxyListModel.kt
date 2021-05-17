@@ -1,4 +1,4 @@
-package com.example.fragmentinsidefragment.data
+package com.example.fragmentinsidefragment.model
 
 import androidx.lifecycle.LiveData
 

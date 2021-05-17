@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fragmentinsidefragment.data.EpoxyListModel
+import com.example.fragmentinsidefragment.model.EpoxyListModel
 import com.example.fragmentinsidefragment.databinding.FragmentEpoxyParentBinding
 import com.example.fragmentinsidefragment.ui.epoxy.controller.EpoxyChildController
 import com.example.fragmentinsidefragment.viewmodel.EpoxyViewModel

@@ -3,7 +3,7 @@ package com.example.fragmentinsidefragment.ui.epoxy.controller
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import com.airbnb.epoxy.TypedEpoxyController
-import com.example.fragmentinsidefragment.data.EpoxyListModel
+import com.example.fragmentinsidefragment.model.EpoxyListModel
 import com.example.fragmentinsidefragment.itemBody
 import com.example.fragmentinsidefragment.ui.epoxy.model.itemFooter
 import com.example.fragmentinsidefragment.ui.epoxy.model.itemHeader
