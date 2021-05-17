@@ -9,7 +9,7 @@ import com.example.fragmentinsidefragment.datasource.factory.EpoxyPagingDataSour
 class EpoxyPagingViewModel : ViewModel() {
 
     companion object {
-        private const val PAGE_SIZE = 5
+        const val PAGE_SIZE = 10
     }
 
     var listStrItems: LiveData<PagedList<String>>? = null

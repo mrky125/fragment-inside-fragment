@@ -28,6 +28,7 @@ abstract class ItemHeaderModel: DataBindingEpoxyModel() {
         binding?.apply {
             this.lifecycleOwner = lifecycleOwner
             setVariable(BR.viewModel, viewModel)
+            setVariable(BR.descriptionText, item?.value)
         }
         lifecycleOwner?.also {
             item?.observe(it, { newStr ->
