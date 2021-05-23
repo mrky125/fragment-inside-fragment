@@ -6,7 +6,7 @@ import com.airbnb.epoxy.TypedEpoxyController
 import com.example.fragmentinsidefragment.model.EpoxyListModel
 import com.example.fragmentinsidefragment.itemBody
 import com.example.fragmentinsidefragment.ui.epoxy.model.itemFooter
-import com.example.fragmentinsidefragment.ui.epoxy.model.itemHeader
+import com.example.fragmentinsidefragment.ui.epoxy.model.itemMain
 import com.example.fragmentinsidefragment.viewmodel.EpoxyViewModel
 
 class EpoxyChildController(
@@ -48,7 +48,7 @@ class EpoxyChildController(
 
     private fun setupFirstList(list: List<LiveData<String>>) {
         list.forEach {
-            itemHeader {
+            itemMain {
                 spanSizeOverride { _, position, _ ->
                     when (position) {
                         0, 1 -> SPAN_SIZE_NORMAL
@@ -77,7 +77,7 @@ class EpoxyChildController(
 
     private fun setupSecondList(list: List<LiveData<String>>) {
         list.forEach {
-            itemHeader {
+            itemMain {
                 id(it.toString()) // idは一意にする（仮でLiveDataのインスタンスそのままにしている）
                 viewModel(viewModel)
                 lifecycleOwner(lifecycleOwner)

@@ -15,7 +15,7 @@ class EpoxyMultiPagingDataSource : PageKeyedDataSource<Int, MultiPaging>() {
         callback: LoadInitialCallback<Int, MultiPaging>
     ) {
         val list = MutableList(1) { count ->
-            MultiPaging.Carousel(count.toString())
+            MultiPaging.Footer(count.toString())
         } as List<MultiPaging>
         Log.d(TAG, "list: $list")
         callback.onResult(list, null, 2)
@@ -40,7 +40,7 @@ class EpoxyMultiPagingDataSource : PageKeyedDataSource<Int, MultiPaging>() {
             }
             in 6..8, in 17..20 -> {
                 MutableList(2) { count ->
-                    MultiPaging.Carousel(count.toString())
+                    MultiPaging.Footer(count.toString())
                 }
             }
             else -> {

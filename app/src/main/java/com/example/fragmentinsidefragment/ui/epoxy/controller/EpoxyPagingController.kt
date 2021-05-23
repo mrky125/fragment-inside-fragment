@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.paging.PagedListEpoxyController
 import com.example.fragmentinsidefragment.ui.epoxy.model.ItemFooterModel_
-import com.example.fragmentinsidefragment.ui.epoxy.model.ItemHeaderModel_
+import com.example.fragmentinsidefragment.ui.epoxy.model.ItemMainModel_
 
 class EpoxyPagingController : PagedListEpoxyController<String>() {
 
@@ -17,7 +17,8 @@ class EpoxyPagingController : PagedListEpoxyController<String>() {
                 }
             }
             else -> {
-                ItemHeaderModel_().apply {
+                ItemMainModel_()
+                    .apply {
                     id(currentPosition)
                     item?.also {
                         item(MutableLiveData(it))
