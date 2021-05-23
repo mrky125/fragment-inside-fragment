@@ -18,7 +18,7 @@ class EpoxyMultiPagingDataSource : PageKeyedDataSource<Int, MultiPaging>() {
         val list = MutableList(1) { count ->
             MultiPaging.Footer(count.toString())
         } as List<MultiPaging>
-        Log.d(TAG, "list: $list")
+        Log.d(TAG, "loadInitial list: $list")
         callback.onResult(list, null, 2)
     }
 
@@ -34,23 +34,18 @@ class EpoxyMultiPagingDataSource : PageKeyedDataSource<Int, MultiPaging>() {
         callback: LoadCallback<Int, MultiPaging>
     ) {
         val list = when (params.key) {
-            in 2..4, in 10..13 -> {
-                MutableList(4) { count ->
-                    MultiPaging.MainItem(MutableLiveData("page: ${params.key}, count: $count"))
-                }
-            }
-            in 6..8, in 17..20 -> {
+            4, 5, 7, 9, 11, 14, 19, 21, 25, 26, 30, 31, 35, 41, 45, 48, 58, 60, 62, 70, 73 -> {
                 MutableList(2) { count ->
-                    MultiPaging.Footer(count.toString())
+                    MultiPaging.Footer("page: ${params.key}, count: $count")
                 }
             }
             else -> {
-                MutableList(4) { count ->
+                MutableList(3) { count ->
                     MultiPaging.MainItem(MutableLiveData("page: ${params.key}, count: $count"))
                 }
             }
         } as List<MultiPaging>
-        Log.d(TAG, "page: ${params.key}, list: $list")
+        Log.d(TAG, "loadAfter page: ${params.key}, list: $list")
         callback.onResult(list, params.key.plus(1))
     }
 
