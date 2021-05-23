@@ -1,13 +1,14 @@
 package com.example.fragmentinsidefragment.datasource
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.example.fragmentinsidefragment.model.MultiPaging
 
 class EpoxyMultiPagingDataSource : PageKeyedDataSource<Int, MultiPaging>() {
 
     companion object {
-        private const val TAG = "PageKeyedDataSource"
+        private const val TAG = "MultiPageKeyedDataSource"
     }
 
     override fun loadInitial(
@@ -35,7 +36,7 @@ class EpoxyMultiPagingDataSource : PageKeyedDataSource<Int, MultiPaging>() {
         val list = when (params.key) {
             in 2..4, in 10..13 -> {
                 MutableList(4) { count ->
-                    MultiPaging.MainItem(count.toString())
+                    MultiPaging.MainItem(MutableLiveData("page: ${params.key}, count: $count"))
                 }
             }
             in 6..8, in 17..20 -> {
@@ -45,11 +46,11 @@ class EpoxyMultiPagingDataSource : PageKeyedDataSource<Int, MultiPaging>() {
             }
             else -> {
                 MutableList(4) { count ->
-                    MultiPaging.MainItem(count.toString())
+                    MultiPaging.MainItem(MutableLiveData("page: ${params.key}, count: $count"))
                 }
             }
         } as List<MultiPaging>
-        Log.d(TAG, "list: $list")
+        Log.d(TAG, "page: ${params.key}, list: $list")
         callback.onResult(list, params.key.plus(1))
     }
 

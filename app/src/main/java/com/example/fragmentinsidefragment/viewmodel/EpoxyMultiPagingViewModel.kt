@@ -28,5 +28,6 @@ class EpoxyMultiPagingViewModel : ViewModel() {
 
     fun tapItem(item: MultiPaging.MainItem) {
         Log.d("viewModel","tapped item: $item")
+        item.name.value = "${item.name.value} tapped!"
     }
 }
