@@ -1,5 +1,6 @@
 package com.example.fragmentinsidefragment.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
@@ -23,5 +24,9 @@ class EpoxyMultiPagingViewModel : ViewModel() {
             .build()
         listMultiItem = LivePagedListBuilder(pagingDataSourceFactory, pageListConfig)
             .build()
+    }
+
+    fun tapItem(item: MultiPaging.MainItem) {
+        Log.d("viewModel","tapped item: $item")
     }
 }

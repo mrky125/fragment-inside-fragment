@@ -45,7 +45,7 @@ class EpoxyMultiPagingFragment : Fragment() {
     }
 
     private fun setupEpoxyAdapter() {
-        epoxyController = EpoxyMultiPagingController()
+        epoxyController = EpoxyMultiPagingController(viewModel, viewLifecycleOwner)
         binding.epoxyRecyclerView.apply {
             adapter = epoxyController.adapter
             layoutManager = LinearLayoutManager(requireActivity())
