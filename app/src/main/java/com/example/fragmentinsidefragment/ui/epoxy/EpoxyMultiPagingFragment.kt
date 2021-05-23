@@ -42,6 +42,7 @@ class EpoxyMultiPagingFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         setupEpoxyAdapter()
         observeListItem()
+        observeNetworkState()
     }
 
     private fun setupEpoxyAdapter() {
@@ -53,9 +54,19 @@ class EpoxyMultiPagingFragment : Fragment() {
     }
 
     private fun observeListItem() {
-        viewModel.listMultiItem?.observe(viewLifecycleOwner, {
+        viewModel.listMultiItem.observe(viewLifecycleOwner, {
             Log.d(TAG, "updated list: $it")
             epoxyController.submitList(it)
+        })
+    }
+
+    private fun observeNetworkState() {
+        viewModel.networkState.observe(viewLifecycleOwner, {
+            Log.d(TAG, "network state: $it")
+            epoxyController.setNetworkState(it)
+            if (it == false) {
+                epoxyController.requestModelBuild()
+            }
         })
     }
 }
