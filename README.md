@@ -47,5 +47,6 @@ RecyclerViewのように、表示されているFragmentかつ表示されてい
 - https://qiita.com/hohohoris/items/97e90f318d4f3d8134e5#model
 - https://stackoverflow.com/questions/60129670/android-epoxyrecyclerview-switching-orientation
 - https://proandroiddev.com/building-complex-screens-in-a-recyclerview-with-epoxy-97845e51f4da
+- https://proandroiddev.com/android-paging-library-with-multiple-view-type-68f85fe1222d
 - https://github.com/airbnb/epoxy/issues/772
 - https://github.com/airbnb/epoxy/issues/224
