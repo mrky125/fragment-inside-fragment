@@ -63,10 +63,10 @@ class ConcatFragment : Fragment() {
     }
 
     private fun setupSubmitList() {
-        secondAdapter.submitList(listOf(false, true, false))
         viewModel.listStrItems?.observe(viewLifecycleOwner) {
             Log.d(TAG, "updated list: $it")
             firstAdapter.submitList(it)
+            secondAdapter.submitList(listOf(false, true, false))
         }
     }
 }
