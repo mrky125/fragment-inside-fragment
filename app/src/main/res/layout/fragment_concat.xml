@@ -16,6 +16,13 @@
             android:layout_height="wrap_content"
             android:text="Parent Fragment top" />
 
+        <TextView
+            android:textSize="48sp"
+            android:background="@color/colorMint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="header view" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
