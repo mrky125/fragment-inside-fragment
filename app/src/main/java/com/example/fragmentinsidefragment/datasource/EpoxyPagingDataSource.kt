@@ -31,7 +31,7 @@ class EpoxyPagingDataSource(
             (((params.key - 1) * pageSize) + count).toString()
         }
         Log.d(TAG, "list: $list")
-        callback.onResult(list, params.key.plus(1))
+        callback.onResult(list, if (params.key < 5) params.key.plus(1) else null)
     }
 
 }
