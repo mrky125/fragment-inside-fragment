@@ -1,4 +1,4 @@
-package com.example.fragmentinsidefragment.viewmodel
+package com.example.fragmentinsidefragment.ui.concat
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -6,10 +6,10 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.example.fragmentinsidefragment.datasource.factory.EpoxyPagingDataSourceFactory
 
-class EpoxyPagingViewModel : ViewModel() {
+class ConcatViewModel : ViewModel() {
 
     companion object {
-        const val PAGE_SIZE = 10
+        const val PAGE_SIZE = 15
     }
 
     var listStrItems: LiveData<PagedList<String>>? = null
@@ -23,5 +23,4 @@ class EpoxyPagingViewModel : ViewModel() {
         listStrItems = LivePagedListBuilder(pagingDataSourceFactory, pageListConfig)
             .build()
     }
-
 }

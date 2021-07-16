@@ -4,14 +4,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fragmentinsidefragment.databinding.ChildItemBinding
 
 class ItemPagingAdapter(
     private val viewLifecycleOwner: LifecycleOwner
-) : ListAdapter<String, ItemPagingAdapter.PagingListViewHolder>(DiffCallback) {
+) : PagedListAdapter<String, ItemPagingAdapter.PagingListViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagingListViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -30,7 +30,8 @@ class ItemPagingAdapter(
         private val binding: ChildItemBinding,
         private val viewLifecycleOwner: LifecycleOwner
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: String) {
+        fun bind(item: String?) {
+            binding.tvDescription.text = item
         }
     }
 

@@ -1,10 +1,12 @@
 package com.example.fragmentinsidefragment.ui.concat
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +16,13 @@ import com.example.fragmentinsidefragment.databinding.FragmentConcatBinding
 class ConcatFragment : Fragment() {
 
     private lateinit var binding: FragmentConcatBinding
+    private lateinit var viewModel: ConcatViewModel
+    private lateinit var firstAdapter: ItemPagingAdapter
+    private lateinit var secondAdapter: NetworkStateAdapter
+
+    companion object {
+        private const val TAG = "ConcatFragment"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +37,7 @@ class ConcatFragment : Fragment() {
     }
 
     private fun setupViewModel() {
+        viewModel = ViewModelProvider.NewInstanceFactory().create(ConcatViewModel::class.java)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,11 +45,12 @@ class ConcatFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         setupConcatAdapter()
+        setupSubmitList()
     }
 
     private fun setupConcatAdapter() {
-        val firstAdapter = ItemPagingAdapter(viewLifecycleOwner)
-        val secondAdapter = NetworkStateAdapter(viewLifecycleOwner)
+        firstAdapter = ItemPagingAdapter(viewLifecycleOwner)
+        secondAdapter = NetworkStateAdapter(viewLifecycleOwner)
 
         val concatAdapter = ConcatAdapter(firstAdapter, secondAdapter)
         binding.recyclerView.apply {
@@ -49,8 +60,13 @@ class ConcatFragment : Fragment() {
                 DividerItemDecoration(requireActivity(), DividerItemDecoration.VERTICAL)
             )
         }
-        val list = listOf("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten")
-        firstAdapter.submitList(list)
+    }
+
+    private fun setupSubmitList() {
         secondAdapter.submitList(listOf(false, true, false))
+        viewModel.listStrItems?.observe(viewLifecycleOwner) {
+            Log.d(TAG, "updated list: $it")
+            firstAdapter.submitList(it)
+        }
     }
 }
