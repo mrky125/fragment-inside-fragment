@@ -11,8 +11,8 @@ import com.airbnb.epoxy.databinding.BR
 import com.example.fragmentinsidefragment.R
 import com.example.fragmentinsidefragment.viewmodel.EpoxyViewModel
 
-@EpoxyModelClass(layout = R.layout.item_header)
-abstract class ItemHeaderModel: DataBindingEpoxyModel() {
+@EpoxyModelClass(layout = R.layout.item_main)
+abstract class ItemMainModel: DataBindingEpoxyModel() {
 
     @EpoxyAttribute var viewModel: EpoxyViewModel? = null
     @EpoxyAttribute var lifecycleOwner: LifecycleOwner? = null
@@ -20,7 +20,7 @@ abstract class ItemHeaderModel: DataBindingEpoxyModel() {
     @EpoxyAttribute var descriptionText: String? = null
 
     override fun getDefaultLayout(): Int {
-        return R.layout.item_header
+        return R.layout.item_main
     }
 
     override fun setDataBindingVariables(binding: ViewDataBinding?) {
@@ -28,6 +28,7 @@ abstract class ItemHeaderModel: DataBindingEpoxyModel() {
         binding?.apply {
             this.lifecycleOwner = lifecycleOwner
             setVariable(BR.viewModel, viewModel)
+            setVariable(BR.descriptionText, item?.value)
         }
         lifecycleOwner?.also {
             item?.observe(it, { newStr ->

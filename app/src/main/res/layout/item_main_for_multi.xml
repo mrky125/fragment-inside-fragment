@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.fragmentinsidefragment.viewmodel.EpoxyMultiPagingViewModel" />
+
+        <variable
+            name="item"
+            type="com.example.fragmentinsidefragment.model.MultiPaging.MainItem" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/llItemView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> viewModel.tapItem(item)}"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivThumbnail"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_gravity="top|start"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:background="@color/colorSkyBlue" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/colorSkyBlue"
+            android:text="@{item.name}" />
+
+    </LinearLayout>
+</layout>

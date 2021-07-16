@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".ui.fragmentinside.FragmentInsideActivity" />
         <activity android:name=".ui.epoxy.EpoxyRecyclerViewActivity" />
+        <activity android:name=".ui.epoxy.EpoxyPagingActivity" />
+        <activity android:name=".ui.epoxy.EpoxyMultiPagingActivity" />
     </application>
 
 </manifest>

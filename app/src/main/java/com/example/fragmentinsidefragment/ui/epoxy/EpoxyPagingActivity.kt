@@ -1,0 +1,20 @@
+package com.example.fragmentinsidefragment.ui.epoxy
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.fragmentinsidefragment.databinding.ActivityEpoxyRecyclerViewBinding
+
+class EpoxyPagingActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val binding = ActivityEpoxyRecyclerViewBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        supportFragmentManager.beginTransaction().apply {
+            add(binding.flContainer.id, EpoxyPagingFragment())
+            commit()
+        }
+    }
+}
