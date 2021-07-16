@@ -4,13 +4,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fragmentinsidefragment.databinding.ChildItemBinding
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class ItemPagingAdapter(
     private val viewLifecycleOwner: LifecycleOwner
@@ -34,13 +31,6 @@ class ItemPagingAdapter(
         private val viewLifecycleOwner: LifecycleOwner
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String) {
-            binding.tvDescription.text = item
-
-            // APIレスポンス取得後にUIを描画する動作を、TextViewのデータを変えて模擬実装
-            viewLifecycleOwner.lifecycleScope.launch {
-                delay(2000)
-                binding.tvDescription.text = "$item\n\n\n\n\n"
-            }
         }
     }
 
