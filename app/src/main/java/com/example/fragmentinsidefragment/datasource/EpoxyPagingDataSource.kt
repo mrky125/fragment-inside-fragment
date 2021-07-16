@@ -2,9 +2,10 @@ package com.example.fragmentinsidefragment.datasource
 
 import android.util.Log
 import androidx.paging.PageKeyedDataSource
-import com.example.fragmentinsidefragment.viewmodel.EpoxyPagingViewModel
 
-class EpoxyPagingDataSource : PageKeyedDataSource<Int, String>() {
+class EpoxyPagingDataSource(
+    private val pageSize: Int
+) : PageKeyedDataSource<Int, String>() {
 
     companion object {
         private const val TAG = "PageKeyedDataSource"
@@ -14,7 +15,7 @@ class EpoxyPagingDataSource : PageKeyedDataSource<Int, String>() {
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, String>
     ) {
-        val list = MutableList(EpoxyPagingViewModel.PAGE_SIZE) { count ->
+        val list = MutableList(pageSize) { count ->
             count.toString()
         }
         Log.d(TAG, "list: $list")
@@ -26,11 +27,11 @@ class EpoxyPagingDataSource : PageKeyedDataSource<Int, String>() {
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, String>) {
-        val list = MutableList(EpoxyPagingViewModel.PAGE_SIZE) { count ->
-            (((params.key - 1) * EpoxyPagingViewModel.PAGE_SIZE) + count).toString()
+        val list = MutableList(pageSize) { count ->
+            (((params.key - 1) * pageSize) + count).toString()
         }
         Log.d(TAG, "list: $list")
-        callback.onResult(list, params.key.plus(1))
+        callback.onResult(list, if (params.key < 5) params.key.plus(1) else null)
     }
 
 }

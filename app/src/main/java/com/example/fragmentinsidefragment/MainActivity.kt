@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.fragmentinsidefragment.databinding.ActivityMainBinding
+import com.example.fragmentinsidefragment.ui.ParentRecyclerActivity
 import com.example.fragmentinsidefragment.ui.epoxy.EpoxyMultiPagingActivity
 import com.example.fragmentinsidefragment.ui.epoxy.EpoxyPagingActivity
 import com.example.fragmentinsidefragment.ui.epoxy.EpoxyRecyclerViewActivity
@@ -33,6 +34,9 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnEpoxyMultiTypePaging.setOnClickListener {
             startActivity(Intent(this, EpoxyMultiPagingActivity::class.java))
+        }
+        binding.btnConcatAdapter.setOnClickListener {
+            startActivity(Intent(this, ParentRecyclerActivity::class.java))
         }
     }
 }
